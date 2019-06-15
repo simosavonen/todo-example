@@ -1,12 +1,17 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteTodoBy, toggleCompletionOf } from '../reducers/todoReducer';
 
-const TodoList = ({ todos, handleDelete, handleToggle }) => {
+const TodoList = () => {
+  const dispatch = useDispatch();
+  const todos = useSelector(state => state.todos);
+
   const todoList = todos.length ? (
     todos.map(todo => (
       <article
         key={todo.id}
         className={`row collection-item ${todo.done ? 'green lighten-3' : ''}`}
-        onClick={() => handleToggle(todo.id)}
+        onClick={() => dispatch(toggleCompletionOf(todo.id))}
       >
         <div className="col s11 valign-wrapper" style={{ lineHeight: '36px' }}>
           {todo.done && (
@@ -23,7 +28,7 @@ const TodoList = ({ todos, handleDelete, handleToggle }) => {
           className="col btn-flat right"
           onClick={event => {
             event.stopPropagation();
-            handleDelete(todo.id);
+            dispatch(deleteTodoBy(todo.id));
           }}
           title="remove this todo"
         >

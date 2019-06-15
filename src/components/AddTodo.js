@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { createTodo } from '../reducers/todoReducer';
 
-const AddTodo = ({ handleAddition }) => {
+const AddTodo = () => {
   const [task, setTask] = useState('');
+  const dispatch = useDispatch();
 
   const submit = event => {
     event.preventDefault();
     if (task !== '') {
-      handleAddition(task);
+      dispatch(createTodo(task));
       setTask('');
     }
   };
