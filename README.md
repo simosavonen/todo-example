@@ -2,6 +2,6 @@
 
 Test different styles of global state management with this basic to-do app
 
-## branch master
+## branch redux
 
-State is stored in component App with useState() hook
+Use the Redux store and hooks from react-redux.
