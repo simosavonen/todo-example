@@ -7,6 +7,7 @@ const AddTodo = ({ handleAddition }) => {
     event.preventDefault();
     if (task !== '') {
       handleAddition(task);
+      setTask('');
     }
   };
 
@@ -16,6 +17,7 @@ const AddTodo = ({ handleAddition }) => {
         <input
           type="text"
           value={task}
+          placeholder="add new todo's here"
           onChange={({ target }) => setTask(target.value)}
         />
         <button className="btn" type="submit">

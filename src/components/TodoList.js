@@ -3,31 +3,39 @@ import React from 'react';
 const TodoList = ({ todos, handleDelete, handleToggle }) => {
   const todoList = todos.length ? (
     todos.map(todo => (
-      <li
+      <article
         key={todo.id}
-        className={`collection-item ${todo.done && 'green lighten-3'}`}
+        className={`row collection-item ${todo.done ? 'green lighten-3' : ''}`}
         onClick={() => handleToggle(todo.id)}
       >
-        <div>
+        <div className="col s11 valign-wrapper" style={{ lineHeight: '36px' }}>
+          {todo.done && (
+            <i
+              className="material-icons green-text"
+              style={{ paddingRight: '10px', marginLeft: '-10px' }}
+            >
+              done
+            </i>
+          )}
           {todo.task}
-          <button
-            className="secondary-content button-link"
-            onClick={event => {
-              event.stopPropagation();
-              handleDelete(todo.id);
-            }}
-            title="remove this todo"
-          >
-            <i className="material-icons">close</i>
-          </button>
         </div>
-      </li>
+        <button
+          className="col btn-flat right"
+          onClick={event => {
+            event.stopPropagation();
+            handleDelete(todo.id);
+          }}
+          title="remove this todo"
+        >
+          <i className="material-icons">close</i>
+        </button>
+      </article>
     ))
   ) : (
-    <li className="collection-item">Nothing left to do!</li>
+    <article className="collection-item">Nothing left to do!</article>
   );
 
-  return <ul className="collection">{todoList}</ul>;
+  return <div className="collection">{todoList}</div>;
 };
 
 export default TodoList;
