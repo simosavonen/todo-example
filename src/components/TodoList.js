@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import {
+  Context as TodoContext,
+  deleteOne,
+  toggleCompletion
+} from '../context/TodoContext';
 
-const TodoList = ({ todos, handleDelete, handleToggle }) => {
-  const todoList = todos.length ? (
-    todos.map(todo => (
+const TodoList = () => {
+  const { state, dispatch } = useContext(TodoContext);
+  const todoList = state.todos.length ? (
+    state.todos.map(todo => (
       <article
         key={todo.id}
         className={`row collection-item ${todo.done ? 'green lighten-3' : ''}`}
-        onClick={() => handleToggle(todo.id)}
+        onClick={() => dispatch(toggleCompletion(todo.id))}
       >
         <div className="col s11 valign-wrapper" style={{ lineHeight: '36px' }}>
           {todo.done && (
@@ -23,7 +29,7 @@ const TodoList = ({ todos, handleDelete, handleToggle }) => {
           className="col btn-flat right"
           onClick={event => {
             event.stopPropagation();
-            handleDelete(todo.id);
+            dispatch(deleteOne(todo.id));
           }}
           title="remove this todo"
         >
