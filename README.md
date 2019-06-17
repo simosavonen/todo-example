@@ -2,6 +2,6 @@
 
 Test different styles of global state management with this basic to-do app
 
-## branch master
+## branch context
 
-State is stored in component App with useState() hook
+Use the context API and useReducer() hook
