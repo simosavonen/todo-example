@@ -1,14 +1,12 @@
-import React, { useState, useContext } from 'react';
-import { Context as TodoContext, addOne } from '../context/TodoContext';
+import React, { useState } from 'react';
 
-const AddTodo = () => {
-  const { dispatch } = useContext(TodoContext);
+const AddTodo = ({ handleAddition }) => {
   const [task, setTask] = useState('');
 
   const submit = event => {
     event.preventDefault();
     if (task !== '') {
-      dispatch(addOne(task));
+      handleAddition(task);
       setTask('');
     }
   };

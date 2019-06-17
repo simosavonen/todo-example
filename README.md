@@ -2,6 +2,6 @@
 
 Test different styles of global state management with this basic to-do app
 
-## branch context
+## branch master
 
-State is stored in TodoContext and components dispatch actions to a reducer.
+State is stored in component App with useState() hook
