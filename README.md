@@ -2,6 +2,6 @@
 
 Test different styles of global state management with this basic to-do app
 
-## branch master
+## branch mobx
 
-State is stored in component App with useState() hook
+Use the [Mobx](https://mobx.js.org/) library for managing the state

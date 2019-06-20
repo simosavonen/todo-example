@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import { inject } from 'mobx-react';
 
-const AddTodo = ({ handleAddition }) => {
+const AddTodo = inject('todoStore')(({ todoStore }) => {
   const [task, setTask] = useState('');
 
   const submit = event => {
     event.preventDefault();
     if (task !== '') {
-      handleAddition(task);
+      todoStore.add(task);
       setTask('');
     }
   };
@@ -26,6 +27,6 @@ const AddTodo = ({ handleAddition }) => {
       </form>
     </div>
   );
-};
+});
 
 export default AddTodo;
