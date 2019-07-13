@@ -2,6 +2,6 @@
 
 Test different styles of global state management with this basic to-do app
 
-## branch master
+## branch easy_peasy
 
-State is stored in component App with useState() hook
+Use the Easy Peasy https://easy-peasy.now.sh/ wrapper for Redux.

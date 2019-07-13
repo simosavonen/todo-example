@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import { useStoreActions } from 'easy-peasy';
 
-const AddTodo = ({ handleAddition }) => {
+const AddTodo = () => {
   const [task, setTask] = useState('');
+
+  const addOne = useStoreActions(actions => actions.todos.addTodo);
 
   const submit = event => {
     event.preventDefault();
     if (task !== '') {
-      handleAddition(task);
+      addOne(task);
       setTask('');
     }
   };

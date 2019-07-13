@@ -1,5 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { StoreProvider, createStore } from 'easy-peasy';
 import App from './App';
+import todosModel from './models/todos';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const model = {
+  todos: todosModel
+};
+
+const store = createStore(model);
+
+ReactDOM.render(
+  <StoreProvider store={store}>
+    <App />
+  </StoreProvider>,
+  document.getElementById('root')
+);

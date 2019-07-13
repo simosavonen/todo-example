@@ -1,6 +1,13 @@
 import React from 'react';
+import { useStoreState, useStoreActions } from 'easy-peasy';
 
-const TodoList = ({ todos, handleDelete, handleToggle }) => {
+const TodoList = () => {
+  const todos = useStoreState(state => state.todos.todos);
+  const handleToggle = useStoreActions(
+    actions => actions.todos.toggleCompletion
+  );
+  const handleDelete = useStoreActions(actions => actions.todos.deleteTodo);
+
   const todoList = todos.length ? (
     todos.map(todo => (
       <article
@@ -17,7 +24,7 @@ const TodoList = ({ todos, handleDelete, handleToggle }) => {
               done
             </i>
           )}
-          {todo.task}
+          {todo.todo}
         </div>
         <button
           className="col btn-flat right"
