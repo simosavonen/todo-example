@@ -3,7 +3,8 @@ import { action } from 'easy-peasy';
 
 const sampleData = [
   { id: uuid.v4(), todo: 'Learn Python', done: false },
-  { id: uuid.v4(), todo: 'Master React', done: true }
+  { id: uuid.v4(), todo: 'Master React', done: true },
+  { id: uuid.v4(), todo: 'Look into Easy Peasy', done: true }
 ];
 
 const todosModel = {
